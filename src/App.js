@@ -53,6 +53,7 @@ const App = () => {
       <SearchBar />
       <Posts 
       postData={posts}
+      likePost={likePost}
       
        />
     </div>
