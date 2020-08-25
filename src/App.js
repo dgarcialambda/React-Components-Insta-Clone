@@ -13,6 +13,8 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import dummyData from "./dummy-data";
 import './App.css';
 
+console.log(dummyData)
+
 const App = () => {
   // Create a state called `posts` to hold the array of post objects, **initializing to dummyData**.
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
@@ -31,15 +33,28 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
-    setPosts(posts.map)
+    
+   
+    setPosts (
+      posts.map ( post => {
+        if (post.id === postId) {
+          return {...post, likes: (post.likes + 1)}
+        }
+        return post
+      }
+      ) 
+      )
   };
 
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
-      <Posts />
       <SearchBar />
+      <Posts 
+      postData={posts}
+      
+       />
     </div>
   );
 };
